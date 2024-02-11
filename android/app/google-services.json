@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1032679581962",
+    "project_id": "edu-world-8e640",
+    "storage_bucket": "edu-world-8e640.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032679581962:android:32c13b7df0c3674fbe72f3",
+        "android_client_info": {
+          "package_name": "com.example.edu_world_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi7Juw8MrwuAC_0O4cGqOsLN-umnXrsqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
