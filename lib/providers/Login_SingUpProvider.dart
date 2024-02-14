@@ -157,27 +157,15 @@ class LoginAndSingUpProvider extends ChangeNotifier {
         storage.write(key: kEmail, value: loginEmailConteroller.text);
         storage.write(key: kPassword, value: loginPasswordConteroller.text);
 
-        eduWorldMessage(
+        Navigator.pushAndRemoveUntil(
           context,
-          errorTxt: "Login Success",
-          btnType: 3,
-          buttons: [
-            DialogButton(
-              child: Text("Okay"),
-              onPressed: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const HomePage();
-                    },
-                  ),
-                  (route) => false,
-                );
-              },
-            )
-          ],
-        ).show();
+          MaterialPageRoute(
+            builder: (context) {
+              return const HomePage();
+            },
+          ),
+              (route) => false,
+        );
       } else {
         eduWorldMessage(context,
             errorTxt: "Login failed please Try again",

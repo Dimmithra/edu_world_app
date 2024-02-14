@@ -1,4 +1,5 @@
 import 'package:edu_world_app/components/common_edu_card.dart';
+import 'package:edu_world_app/pages/pdfview/pdf_viewer.dart';
 import 'package:edu_world_app/pages/search/search.dart';
 import 'package:edu_world_app/providers/home_provider.dart';
 import 'package:edu_world_app/utils/color.dart';
@@ -93,8 +94,8 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
                                 .getallBookDataModel!.data![index].firebaseUrl);
                       },
                       onTap: () {
-                        homeProvider.launchInBrowser(Uri.parse(
-                            "${homeProvider.getallBookDataModel!.data![index].firebaseUrl}"));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl)));
+                       // Navigator.push(context, PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl));
                       },
                       // onterData: "publishDate",
                     );
