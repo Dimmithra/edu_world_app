@@ -94,10 +94,15 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
                                 .getallBookDataModel!.data![index].firebaseUrl);
                       },
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl)));
-                       // Navigator.push(context, PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => PDFViwe(homeProvider
+                                .getallBookDataModel!
+                                .data![index]
+                                .firebaseUrl)));
+                        // Navigator.push(context, PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl));
                       },
-                      // onterData: "publishDate",
+                      onterData:
+                          "${homeProvider.getallBookDataModel!.data![index].description}",
                     );
                   },
                 )

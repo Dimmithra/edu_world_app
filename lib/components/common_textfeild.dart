@@ -69,12 +69,18 @@ class CommonTextFeild extends StatelessWidget {
                   )
                 : null,
             focusedBorder: !fullborder
-                ? const UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
+                ? UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: homeProvider.darkMode
+                            ? Colors.white
+                            : Colors.black),
                   )
                 : OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: BorderSide(
+                        color: homeProvider.darkMode
+                            ? Colors.white
+                            : Colors.black),
                   ),
             suffix: suffixicon,
             filled: filled,

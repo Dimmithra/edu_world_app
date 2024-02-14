@@ -4,6 +4,7 @@ import 'package:edu_world_app/utils/color.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CommonEduCard extends StatelessWidget {
   const CommonEduCard({
@@ -68,16 +69,35 @@ class CommonEduCard extends StatelessWidget {
                                 ))
                           ],
                         ),
-                        CachedNetworkImage(
-                          imageUrl: imageUrl,
-                          height: 100,
-                          width: 100,
-                          placeholder: (context, url) {
-                            return const CircularProgressIndicator();
-                          },
-                          errorWidget: (context, url, error) {
-                            return errorWidget;
-                          },
+                        Row(
+                          children: [
+                            CachedNetworkImage(
+                              imageUrl: imageUrl,
+                              height: 100,
+                              width: 100,
+                              placeholder: (context, url) {
+                                return const CircularProgressIndicator();
+                              },
+                              errorWidget: (context, url, error) {
+                                return errorWidget;
+                              },
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width / 1.9,
+                                child: Text(
+                                  "${onterData!.isEmpty ? "" : onterData}",
+                                  style: GoogleFonts.abel(
+                                    textStyle: const TextStyle(
+                                      fontSize: 22,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,15 +110,15 @@ class CommonEduCard extends StatelessWidget {
                                     fontSize: 12, fontWeight: FontWeight.bold),
                               ),
                             ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              child: Text(
-                                "${onterData == null ? "" : onterData}",
-                                style: TextStyle(
-                                  fontSize: 11,
-                                ),
-                              ),
-                            ),
+                            // SizedBox(
+                            //   width: MediaQuery.of(context).size.width * 0.5,
+                            //   child: Text(
+                            //     "${onterData == null ? "" : onterData}",
+                            //     style: TextStyle(
+                            //       fontSize: 11,
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ],

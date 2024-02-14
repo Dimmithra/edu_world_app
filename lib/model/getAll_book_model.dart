@@ -27,13 +27,15 @@ class Data {
   String? firebaseUrl;
   Subcategory? subcategory;
   String? firebaseImage;
-
-  Data(
-      {this.bookId,
-      this.bookName,
-      this.firebaseUrl,
-      this.subcategory,
-      this.firebaseImage});
+  dynamic description;
+  Data({
+    this.bookId,
+    this.bookName,
+    this.firebaseUrl,
+    this.subcategory,
+    this.firebaseImage,
+    this.description,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     bookId = json['book_id'];
@@ -43,6 +45,7 @@ class Data {
         ? new Subcategory.fromJson(json['subcategory'])
         : null;
     firebaseImage = json['firebase_image'];
+    description = json['description'];
   }
 
   Map<String, dynamic> toJson() {
@@ -54,6 +57,7 @@ class Data {
       data['subcategory'] = this.subcategory!.toJson();
     }
     data['firebase_image'] = this.firebaseImage;
+    data['description'] = this.description;
     return data;
   }
 }

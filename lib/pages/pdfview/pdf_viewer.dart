@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-
-
 /// Represents Homepage for Navigation
 class PDFViwe extends StatefulWidget {
-
   String? url;
   @override
   _PDFViwe createState() => _PDFViwe();
@@ -18,7 +15,6 @@ class _PDFViwe extends State<PDFViwe> {
 
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -26,7 +22,7 @@ class _PDFViwe extends State<PDFViwe> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Syncfusion Flutter PDF Viewer'),
+        title: const Text('PDF Viewer'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(

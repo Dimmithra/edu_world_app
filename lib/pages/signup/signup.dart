@@ -148,11 +148,10 @@ class _SignUpState extends State<SignUp> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Don you have an account? ",
+                                        "Do you have an account? ",
                                         style: GoogleFonts.nunitoSans(
                                           textStyle: const TextStyle(
                                               fontSize: 14,
-                                              color: kDefaultTextColor,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -161,8 +160,6 @@ class _SignUpState extends State<SignUp> {
                                         style: GoogleFonts.nunitoSans(
                                           textStyle: const TextStyle(
                                               fontSize: 16,
-                                              color: Color.fromARGB(
-                                                  255, 0, 27, 100),
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
