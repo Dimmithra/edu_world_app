@@ -3,7 +3,7 @@ import 'dart:developer' as dev;
 
 class FirebaseAuthServices {
   FirebaseAuth auth = FirebaseAuth.instance;
-
+//User registration
   Future<User?> signUpWithEmailAndPassword(
       String email, String password) async {
     try {
@@ -14,7 +14,7 @@ class FirebaseAuthServices {
       dev.log("$e");
     }
   }
-
+//User Login
   Future<User?> loginWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential credential = await auth.signInWithEmailAndPassword(

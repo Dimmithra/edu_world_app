@@ -98,8 +98,8 @@ class _SignUpState extends State<SignUp> {
                             isPassword: true,
                           ),
                           CommonTextFeild(
-                            hinttext: "Conform Password",
-                            label: "Conform Password",
+                            hinttext: "Confirm Password",
+                            label: "Confirm Password",
                             controller: loginAndSingUpProvider
                                 .conformPasswordConteroller,
                             validation: true,

@@ -1,4 +1,5 @@
 import 'package:edu_world_app/providers/home_provider.dart';
+import 'package:edu_world_app/services/networkconnection_service.dart';
 import 'package:edu_world_app/utils/color.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,12 @@ class MainBody extends StatefulWidget {
 }
 
 class _MainBodyState extends State<MainBody> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    InternetConnectionChecker().isInternetAvailable(context);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(
