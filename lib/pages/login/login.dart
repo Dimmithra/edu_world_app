@@ -152,8 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             style: GoogleFonts.nunitoSans(
                                               textStyle: const TextStyle(
                                                   fontSize: 16,
-                                                  color: Color.fromARGB(
-                                                      255, 0, 27, 100),
+
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),

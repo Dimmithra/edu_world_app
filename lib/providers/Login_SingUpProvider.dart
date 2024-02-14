@@ -180,7 +180,7 @@ class LoginAndSingUpProvider extends ChangeNotifier {
         ).show();
       } else {
         eduWorldMessage(context,
-            errorTxt: "Login fail please Try again",
+            errorTxt: "Login failed please Try again",
             btnType: 3,
             buttons: [
               DialogButton(
