@@ -46,12 +46,12 @@ class _HomePageState extends State<HomePage> {
                 icon: Icon(
                   Icons.home,
                 ),
-                label: 'Global News',
+                label: 'Home',
                 backgroundColor: Colors.red,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.my_location_outlined),
-                label: 'Local News',
+                icon: Icon(Icons.person),
+                label: 'Account',
                 backgroundColor: Colors.green,
               ),
             ],
