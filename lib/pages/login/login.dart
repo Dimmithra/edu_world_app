@@ -2,6 +2,7 @@ import 'package:edu_world_app/components/common_button.dart';
 import 'package:edu_world_app/components/common_textfeild.dart';
 import 'package:edu_world_app/pages/signup/signup.dart';
 import 'package:edu_world_app/providers/Login_SingUpProvider.dart';
+import 'package:edu_world_app/providers/home_provider.dart';
 import 'package:edu_world_app/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,8 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer<LoginAndSingUpProvider>(
-        builder: (context, loginAndSingUpProvider, child) {
+      body: Consumer2<LoginAndSingUpProvider, HomeProvider>(
+        builder: (context, loginAndSingUpProvider, homeProvider, child) {
           return Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -37,8 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: MediaQuery.of(context).size.width / 1.1,
                         height: MediaQuery.of(context).size.height / 1.5,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
+                          borderRadius: BorderRadius.circular(10),
+                          color: homeProvider.getDarkTheme
+                              ? Color.fromARGB(255, 0, 10, 102)
+                              : Colors.white,
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -55,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: GoogleFonts.abel(
                                   textStyle: const TextStyle(
                                     fontSize: 22,
-                                    color: kDefaultTextColor,
+                                    // color: kDefaultTextColor,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -65,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: GoogleFonts.abel(
                                   textStyle: const TextStyle(
                                     fontSize: 22,
-                                    color: kDefaultTextColor,
+                                    // color: kDefaultTextColor,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -139,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             style: GoogleFonts.nunitoSans(
                                               textStyle: const TextStyle(
                                                   fontSize: 14,
-                                                  color: kDefaultTextColor,
+                                                  // color: kDefaultTextColor,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),

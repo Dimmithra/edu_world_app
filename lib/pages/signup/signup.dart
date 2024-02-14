@@ -2,6 +2,7 @@ import 'package:edu_world_app/components/common_button.dart';
 import 'package:edu_world_app/components/common_textfeild.dart';
 import 'package:edu_world_app/pages/login/login.dart';
 import 'package:edu_world_app/providers/Login_SingUpProvider.dart';
+import 'package:edu_world_app/providers/home_provider.dart';
 import 'package:edu_world_app/utils/color.dart';
 import 'package:edu_world_app/utils/main_body.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,10 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return MainBody(
       title: "Sign Up",
-      appBarColor: appBarColor,
+      // appBarColor: appBarColor,
       appbarTitleColor: kdefWhiteColor,
-      body: Consumer<LoginAndSingUpProvider>(
-        builder: (context, loginAndSingUpProvider, child) {
+      body: Consumer2<LoginAndSingUpProvider, HomeProvider>(
+        builder: (context, loginAndSingUpProvider, homeProvider, child) {
           return SingleChildScrollView(
             padding: const EdgeInsets.all(12),
             child: Form(
@@ -34,8 +35,11 @@ class _SignUpState extends State<SignUp> {
                     // width: MediaQuery.of(context).size.width / 1.1,
                     // height: MediaQuery.of(context).size.height / 1.5,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white),
+                      borderRadius: BorderRadius.circular(10),
+                      color: homeProvider.getDarkTheme
+                          ? Color.fromARGB(255, 0, 10, 102)
+                          : Colors.white,
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -52,7 +56,9 @@ class _SignUpState extends State<SignUp> {
                             style: GoogleFonts.abel(
                               textStyle: const TextStyle(
                                 fontSize: 24,
-                                color: kDefaultTextColor,
+                                // color: homeProvider.getDarkTheme
+                                //     ? Colors.white
+                                //     : kDefaultTextColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -62,7 +68,6 @@ class _SignUpState extends State<SignUp> {
                             style: GoogleFonts.abel(
                               textStyle: const TextStyle(
                                 fontSize: 22,
-                                color: kDefaultTextColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

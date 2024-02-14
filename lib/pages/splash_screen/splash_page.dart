@@ -1,5 +1,4 @@
 import 'package:edu_world_app/providers/Login_SingUpProvider.dart';
-import 'package:edu_world_app/providers/auth_provider.dart';
 import 'package:edu_world_app/utils/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
