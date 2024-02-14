@@ -1,4 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:edu_world_app/pages/splash_screen/splash_page.dart';
+import 'package:edu_world_app/utils/edu_world_message.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as dev;
 
@@ -19,6 +21,14 @@ class InternetConnectionChecker {
     if (connectivityResult == ConnectivityResult.none) {
 
       dev.log('network fasle');
+    eduWorldMessage(context, errorTxt: "No internet Connection! , please try again",buttons:[
+      DialogButton(child: Text("Retry"), onPressed: () {
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) {
+          return SplashScreen();
+        },), (route) => false);
+
+      },)
+    ] ).show();
       return false;
       // No internet connection
     } else {
