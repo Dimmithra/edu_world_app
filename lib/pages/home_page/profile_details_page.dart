@@ -22,7 +22,6 @@ class _BookDetailsState extends State<BookDetails> {
   final storage = new FlutterSecureStorage();
   @override
   void initState() {
-    // String? email = await storage.read(key: kEmail);
     super.initState();
   }
 
@@ -72,13 +71,13 @@ class _BookDetailsState extends State<BookDetails> {
                           padding: const EdgeInsets.all(10.0),
                           child: Column(
                             children: [
-                              // const Image(
-                              //   image: AssetImage(
-                              //     "assets/images/profile.png",
-                              //   ),
-                              //   height: 100,
-                              //   width: 100,
-                              // ),
+                              const Image(
+                                image: AssetImage(
+                                  "assets/images/profile.png",
+                                ),
+                                height: 100,
+                                width: 100,
+                              ),
                               Text(
                                 "Welcome",
                                 style: GoogleFonts.abel(
@@ -101,22 +100,22 @@ class _BookDetailsState extends State<BookDetails> {
                               const SizedBox(
                                 height: 25,
                               ),
-                              // CommonBtn(
-                              //   onPress: () {
-                              //     FirebaseAuth.instance.signOut();
-                              //     Navigator.pushAndRemoveUntil(context,
-                              //         MaterialPageRoute(
-                              //       builder: (context) {
-                              //         return LoginScreen();
-                              //       },
-                              //     ), (route) => false);
-                              //   },
-                              //   btnName: "Sing Out",
-                              //   fontColor: kDefaultTextColor,
-                              //   backgroundColor: homeProvider.darkMode
-                              //       ? Colors.white
-                              //       : Colors.lightBlueAccent,
-                              // )
+                               CommonBtn(
+                                 onPress: () {
+                                  FirebaseAuth.instance.signOut();
+                                   Navigator.pushAndRemoveUntil(context,
+                                       MaterialPageRoute(
+                                     builder: (context) {
+                                       return LoginScreen();
+                                     },
+                                   ), (route) => false);
+                                 },
+                                 btnName: "Sing Out",
+                                fontColor: kDefaultTextColor,
+                                backgroundColor: homeProvider.darkMode
+                                    ? Colors.white
+                                    : Colors.lightBlueAccent,
+                              )
                             ],
                           ),
                         )),

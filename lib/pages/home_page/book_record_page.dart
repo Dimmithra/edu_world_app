@@ -80,7 +80,7 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
                           "${homeProvider.getallBookDataModel!.data![index].bookName}",
                       imageUrl:
                           "${homeProvider.getallBookDataModel!.data![index].firebaseImage}",
-                      errorWidget: Image(
+                      errorWidget: const Image(
                         image: AssetImage("assets/images/book.png"),
                         height: 50,
                         width: 50,
