@@ -35,10 +35,11 @@ class _SearchScreenState extends State<SearchScreen> {
             padding: const EdgeInsets.all(10.0),
             child: Stack(
               children: [
-                Row(
+                Row(crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width / 1.21,
+                      width: MediaQuery.of(context).size.width / 1.1,
                       child: CommonTextFeild(
                         controller: homeProvider.getesearchController,
                         hinttext: "Search",
@@ -59,61 +60,61 @@ class _SearchScreenState extends State<SearchScreen> {
                         ),
                       ),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        showModalBottomSheet<void>(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return Stack(
-                              children: [
-                                Container(
-                                  height: 200,
-                                  color: Color.fromARGB(255, 175, 175, 175),
-                                  child: Center(
-                                    child: ListView.builder(
-                                      itemCount: homeProvider
-                                          .getallCategorModelData!.data!.length,
-                                      scrollDirection: Axis.vertical,
-                                      itemBuilder: (context, index) {
-                                        return InkWell(
-                                          onTap: () {},
-                                          child: Center(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Text(
-                                                  "${homeProvider.getallCategorModelData!.data![index].name}",
-                                                  style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.bold)),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(25),
-                                      color: Colors.red),
-                                  child: IconButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      icon: Icon(
-                                        Icons.close,
-                                        color: Colors.white,
-                                      )),
-                                )
-                              ],
-                            );
-                          },
-                        );
-                      },
-                      icon: Icon(Icons.filter_list_outlined, size: 25),
-                    ),
+                    // IconButton(
+                    //   onPressed: () {
+                    //     showModalBottomSheet<void>(
+                    //       context: context,
+                    //       builder: (BuildContext context) {
+                    //         return Stack(
+                    //           children: [
+                    //             Container(
+                    //               height: 200,
+                    //               color: Color.fromARGB(255, 175, 175, 175),
+                    //               child: Center(
+                    //                 child: ListView.builder(
+                    //                   itemCount: homeProvider
+                    //                       .getallCategorModelData!.data!.length,
+                    //                   scrollDirection: Axis.vertical,
+                    //                   itemBuilder: (context, index) {
+                    //                     return InkWell(
+                    //                       onTap: () {},
+                    //                       child: Center(
+                    //                         child: Padding(
+                    //                           padding:
+                    //                               const EdgeInsets.all(8.0),
+                    //                           child: Text(
+                    //                               "${homeProvider.getallCategorModelData!.data![index].name}",
+                    //                               style: TextStyle(
+                    //                                   fontSize: 16,
+                    //                                   fontWeight:
+                    //                                       FontWeight.bold)),
+                    //                         ),
+                    //                       ),
+                    //                     );
+                    //                   },
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //             Container(
+                    //               decoration: BoxDecoration(
+                    //                   borderRadius: BorderRadius.circular(25),
+                    //                   color: Colors.red),
+                    //               child: IconButton(
+                    //                   onPressed: () {
+                    //                     Navigator.pop(context);
+                    //                   },
+                    //                   icon: Icon(
+                    //                     Icons.close,
+                    //                     color: Colors.white,
+                    //                   )),
+                    //             )
+                    //           ],
+                    //         );
+                    //       },
+                    //     );
+                    //   },
+                    //   icon: Icon(Icons.filter_list_outlined, size: 25),
+                    // ),
                   ],
                 ),
                 SizedBox(
