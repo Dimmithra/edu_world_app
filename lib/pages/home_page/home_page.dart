@@ -1,14 +1,9 @@
-import 'package:edu_world_app/components/common_edu_card.dart';
 import 'package:edu_world_app/pages/home_page/profile_details_page.dart';
 import 'package:edu_world_app/pages/home_page/book_record_page.dart';
-import 'package:edu_world_app/pages/search/search.dart';
 import 'package:edu_world_app/providers/home_provider.dart';
 import 'package:edu_world_app/utils/color.dart';
-import 'package:edu_world_app/utils/main_body.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
