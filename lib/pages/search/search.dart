@@ -84,7 +84,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             mainTitle:
                                 "${homeProvider.getallCategorModelData!.data![index].bookName}",
                             imageUrl:
-                                "${homeProvider.getallCategorModelData!.data![index].firebaseImage!.isNotEmpty}",
+                                "${homeProvider.getallCategorModelData!.data![index].firebaseImage}",
                             errorWidget: const Image(
                               image: AssetImage("assets/images/book.png"),
                               height: 50,
