@@ -17,6 +17,9 @@ import 'package:url_launcher/url_launcher.dart';
 class HomeProvider extends ChangeNotifier {
   final storage = new FlutterSecureStorage();
 
+  TextEditingController searchController = TextEditingController();
+  TextEditingController get getesearchController => searchController;
+
   //bottom nav bar
   int selectedIndex = 0;
 
