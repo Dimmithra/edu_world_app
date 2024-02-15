@@ -22,6 +22,7 @@ dependencies:
   url_launcher: ^6.2.4
   connectivity_plus: ^5.0.2
   syncfusion_flutter_pdf: ^24.2.5
+
   syncfusion_flutter_pdfviewer: ^24.2.5
   
 
