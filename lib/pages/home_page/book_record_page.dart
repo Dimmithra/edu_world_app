@@ -72,38 +72,40 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
               child: CircularProgressIndicator(),
             );
           }
-          return homeProvider.getallBookDataModel!.data!.isNotEmpty
+          return homeProvider.getallBookDataModel != null
               ? ListView.builder(
                   itemCount: homeProvider.getallBookDataModel!.data!.length,
                   itemBuilder: (context, index) {
-                    return CommonEduCard(
-                      mainTitle:
-                          "${homeProvider.getallBookDataModel!.data![index].bookName}",
-                      imageUrl:
-                          "${homeProvider.getallBookDataModel!.data![index].firebaseImage}",
-                      errorWidget: const Image(
-                        image: AssetImage("assets/images/book.png"),
-                        height: 50,
-                        width: 50,
-                      ),
-                      auther: " ",
-                      shareBtn: () {
-                        homeProvider.shareRecord(
-                            context,
-                            homeProvider
-                                .getallBookDataModel!.data![index].firebaseUrl);
-                      },
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => PDFViwe(homeProvider
-                                .getallBookDataModel!
-                                .data![index]
-                                .firebaseUrl)));
-                        // Navigator.push(context, PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl));
-                      },
-                      onterData:
-                          "${homeProvider.getallBookDataModel!.data![index].description}",
-                    );
+                    return homeProvider.getallBookDataModel!.data!.isNotEmpty
+                        ? CommonEduCard(
+                            mainTitle:
+                                "${homeProvider.getallBookDataModel!.data![index].bookName!.isEmpty ? "" : homeProvider.getallBookDataModel!.data![index].bookName}",
+                            imageUrl:
+                                "${homeProvider.getallBookDataModel!.data![index].firebaseImage}",
+                            errorWidget: const Image(
+                              image: AssetImage("assets/images/book.png"),
+                              height: 50,
+                              width: 50,
+                            ),
+                            auther: " ",
+                            shareBtn: () {
+                              homeProvider.shareRecord(
+                                  context,
+                                  homeProvider.getallBookDataModel!.data![index]
+                                      .firebaseUrl);
+                            },
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => PDFViwe(homeProvider
+                                      .getallBookDataModel!
+                                      .data![index]
+                                      .firebaseUrl)));
+                              // Navigator.push(context, PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl));
+                            },
+                            onterData:
+                                "${homeProvider.getallBookDataModel!.data![index].description}",
+                          )
+                        : Container();
                   },
                 )
               : Container();

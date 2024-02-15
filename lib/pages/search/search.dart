@@ -18,8 +18,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<HomeProvider>(context, listen: false).getAllCatsData(context);
-      Provider.of<HomeProvider>(context, listen: false).getAllBookData(context);
+      Provider.of<HomeProvider>(context, listen: false)
+          .clearSearchData(context);
     });
     super.initState();
   }
@@ -31,97 +31,88 @@ class _SearchScreenState extends State<SearchScreen> {
       automaticallyImplyLeading: true,
       body: Consumer<HomeProvider>(
         builder: (context, homeProvider, child) {
-          return Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Stack(
-              children: [
-                Row(crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 1.1,
-                      child: CommonTextFeild(
-                        controller: homeProvider.getesearchController,
-                        hinttext: "Search",
-                        label: "Search",
-                        fullborder: true,
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            if (homeProvider
-                                .getesearchController.text.isEmpty) {
-                              eduWorldMessage(context,
-                                      errorTxt: "Search feild cannot be blank")
-                                  .show();
-                            } else {
-                              homeProvider.getAllBookData(context);
-                            }
-                          },
-                          icon: Icon(Icons.search),
-                        ),
-                      ),
+          return Stack(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 100,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    child: CommonTextFeild(
+                      controller: homeProvider.getesearchController,
+                      hinttext: "Enter Book Name",
+                      label: "Search By Book Name",
+                      fullborder: true,
+                      onChanged: (p0) {
+                        homeProvider.getAllSearchData(context);
+                      },
+                      suffixIcon: homeProvider.getloadingAllCadData
+                          ? CircularProgressIndicator()
+                          : IconButton(
+                              onPressed: () {
+                                // if (homeProvider
+                                //     .getesearchController.text.isEmpty) {
+                                //   eduWorldMessage(context,
+                                //           errorTxt:
+                                //               "Search feild cannot be blank")
+                                //       .show();
+                                // } else {
+                                homeProvider.getAllSearchData(context);
+                                // }
+                              },
+                              icon: Icon(Icons.search),
+                            ),
                     ),
-                    // IconButton(
-                    //   onPressed: () {
-                    //     showModalBottomSheet<void>(
-                    //       context: context,
-                    //       builder: (BuildContext context) {
-                    //         return Stack(
-                    //           children: [
-                    //             Container(
-                    //               height: 200,
-                    //               color: Color.fromARGB(255, 175, 175, 175),
-                    //               child: Center(
-                    //                 child: ListView.builder(
-                    //                   itemCount: homeProvider
-                    //                       .getallCategorModelData!.data!.length,
-                    //                   scrollDirection: Axis.vertical,
-                    //                   itemBuilder: (context, index) {
-                    //                     return InkWell(
-                    //                       onTap: () {},
-                    //                       child: Center(
-                    //                         child: Padding(
-                    //                           padding:
-                    //                               const EdgeInsets.all(8.0),
-                    //                           child: Text(
-                    //                               "${homeProvider.getallCategorModelData!.data![index].name}",
-                    //                               style: TextStyle(
-                    //                                   fontSize: 16,
-                    //                                   fontWeight:
-                    //                                       FontWeight.bold)),
-                    //                         ),
-                    //                       ),
-                    //                     );
-                    //                   },
-                    //                 ),
-                    //               ),
-                    //             ),
-                    //             Container(
-                    //               decoration: BoxDecoration(
-                    //                   borderRadius: BorderRadius.circular(25),
-                    //                   color: Colors.red),
-                    //               child: IconButton(
-                    //                   onPressed: () {
-                    //                     Navigator.pop(context);
-                    //                   },
-                    //                   icon: Icon(
-                    //                     Icons.close,
-                    //                     color: Colors.white,
-                    //                   )),
-                    //             )
-                    //           ],
-                    //         );
-                    //       },
-                    //     );
-                    //   },
-                    //   icon: Icon(Icons.filter_list_outlined, size: 25),
-                    // ),
-                  ],
-                ),
-                SizedBox(
-                  height: 80,
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 120,
+              ),
+              homeProvider.getallCategorModelData != null
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 85),
+                      child: ListView.builder(
+                        itemCount:
+                            homeProvider.getallCategorModelData!.data!.length,
+                        itemBuilder: (context, index) {
+                          return CommonEduCard(
+                            mainTitle:
+                                "${homeProvider.getallCategorModelData!.data![index].bookName}",
+                            imageUrl:
+                                "${homeProvider.getallCategorModelData!.data![index].firebaseImage!.isNotEmpty}",
+                            errorWidget: const Image(
+                              image: AssetImage("assets/images/book.png"),
+                              height: 50,
+                              width: 50,
+                            ),
+                            auther: " ",
+                            shareBtn: () {
+                              homeProvider.shareRecord(
+                                  context,
+                                  homeProvider.getallCategorModelData!
+                                      .data![index].firebaseUrl);
+                            },
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => PDFViwe(homeProvider
+                                      .getallCategorModelData!
+                                      .data![index]
+                                      .firebaseUrl)));
+                              // Navigator.push(context, PDFViwe(homeProvider.getallBookDataModel!.data![index].firebaseUrl));
+                            },
+                            onterData:
+                                "${homeProvider.getallCategorModelData!.data![index].description}",
+                          );
+                        },
+                      ),
+                    )
+                  : Container()
+            ],
           );
         },
       ),

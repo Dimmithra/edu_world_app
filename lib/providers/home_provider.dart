@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:edu_world_app/model/getAll_book_model.dart';
 import 'package:edu_world_app/model/getAll_book_model.dart';
-import 'package:edu_world_app/model/getall_category_model.dart';
+import 'package:edu_world_app/model/search_book_model.dart';
 import 'package:edu_world_app/services/common_http.dart';
 import 'package:edu_world_app/utils/sheard_data.dart';
 import 'package:edu_world_app/utils/url.dart';
@@ -69,7 +69,7 @@ class HomeProvider extends ChangeNotifier {
         GetAllBookDataModel temp = GetAllBookDataModel(data: dataList);
         dev.log("$responseDataList");
         if (temp.data != null && temp.data!.isNotEmpty) {
-          await setallBookDataModel(temp);
+          setallBookDataModel(temp);
         } else {
           dev.log("No data found");
         }
@@ -123,27 +123,23 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getAllCatsData(context) async {
+  Future<void> getAllSearchData(context) async {
+    // dev.log("{ "key": getesearchController.text,}")
     try {
       setloadingAllCadData(true);
       final CommonHttp commonHttp = CommonHttp('', '');
-      final Map<String, dynamic> responseMap =
-          await commonHttp.get(getallCats); // Assuming this returns a Map
-      final List<dynamic>? responseDataList =
-          responseMap['data']; // Assuming 'data' contains the list
-      if (responseDataList != null) {
-        List<GetAllCategorModelData> dataList = responseDataList
-            .map((response) => GetAllCategorModelData.fromJson(response))
-            .toList();
-        GetAllCategorModel temp = GetAllCategorModel(data: dataList);
-        dev.log("$responseDataList");
-        if (temp.data != null && temp.data!.isNotEmpty) {
-          await setallCategorModelData(temp);
-        } else {
-          dev.log("No data found");
-        }
+      final data = {
+        "keyword": getesearchController.text,
+      };
+      final response = await commonHttp.post(
+          getbookKeyword, data); // Assuming this returns a Map
+      dev.log("$response");
+      SearchBookDataModel tmp =
+          SearchBookDataModel.fromJson(jsonDecode(response));
+      if (tmp.data!.isNotEmpty) {
+        setallCategorModelData(tmp);
       } else {
-        dev.log("Data is null or not a list");
+        dev.log("Nodata founded");
       }
     } catch (e) {
       dev.log("$e");
@@ -152,10 +148,15 @@ class HomeProvider extends ChangeNotifier {
     }
   }
 
-  GetAllCategorModel? allCategorModelData;
-  GetAllCategorModel? get getallCategorModelData => allCategorModelData;
+  SearchBookDataModel? allCategorModelData;
+  SearchBookDataModel? get getallCategorModelData => allCategorModelData;
   setallCategorModelData(val) {
     allCategorModelData = val;
     notifyListeners();
+  }
+
+  Future<void> clearSearchData(context) async {
+    setallCategorModelData == [];
+    searchController.clear();
   }
 }

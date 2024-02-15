@@ -90,7 +90,7 @@ class CommonEduCard extends StatelessWidget {
                                   "${onterData!.isEmpty ? "" : onterData}",
                                   style: GoogleFonts.abel(
                                     textStyle: const TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
