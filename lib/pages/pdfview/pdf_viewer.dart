@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-/// Represents Homepage for Navigation
 class PDFViwe extends StatefulWidget {
   String? url;
   @override
